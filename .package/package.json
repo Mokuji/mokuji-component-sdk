@@ -1,0 +1,14 @@
+{
+  "title": "Tuxion CMS - SDK",
+  "description": "The SDK component for the Tuxion CMS.",
+  "type": "manual",
+  "dbUpdates": true,
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2013-04-04",
+      "description": "First version to be provided.",
+      "changes": []
+    }
+  ]
+}
