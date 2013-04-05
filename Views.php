@@ -6,7 +6,14 @@ class Views extends \dependencies\BaseViews
   protected function sdk_dashboard()
   {
     
-    return array();
+    return array(
+      'menu' => array(
+        'notifications' => 'Notifications',
+        'component_create' => 'New component',
+        'package_json' => 'package.json'
+      ),
+      'content' => $this->section('notifications')
+    );
     
   }
   

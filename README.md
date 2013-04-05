@@ -6,3 +6,6 @@ This component adds a configuration page with many helpers to create software qu
 
 ## Feature list
 * Logging of missing language files or phrases.
+* Notifications in the backend of things that need attention..
+* Component generator
+* package.json generator
