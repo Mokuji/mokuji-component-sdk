@@ -3,6 +3,9 @@
 class Helpers extends \dependencies\BaseComponent
 {
   
+  protected
+    $default_permission = 2;
+  
   /**
    * Creates a new component.
    * 
@@ -33,6 +36,7 @@ class Helpers extends \dependencies\BaseComponent
       'includes' => 'includes',
       'models' => 'models',
       'templates' => 'templates',
+      'pagetypes' => 'pagetypes',
       'global' => 'templates'.DS.'global',
       'backend' => 'templates'.DS.'backend',
       'frontend' => 'templates'.DS.'frontend'
@@ -41,6 +45,7 @@ class Helpers extends \dependencies\BaseComponent
     $gitignore = array(
       'includes',
       'models',
+      'pagetypes',
       'global',
       'backend',
       'frontend'
