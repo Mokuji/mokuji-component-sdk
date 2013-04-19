@@ -1,0 +1,70 @@
+<?php namespace templates; if(!defined('TX')) die('No direct access.'); ?>
+<!doctype html>
+<html>
+  
+  <?php /*
+    
+    The order of these head elements are optimized for performance.
+    Since they are all required, this should probably be left unchanged.
+    
+  */ ?>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8">
+    <base href="<?php echo $head->base->href; ?>" target="<?php echo $head->base->target; ?>" />
+    <title><?php echo $head->title; ?></title>
+    <meta name="revisit-after" content="5 days" />
+    <?php
+      echo $head->meta;
+      echo $head->links;
+      echo $head->plugins;
+      echo $head->theme;
+      echo $head->scripts;
+    ?>
+  </head>
+  
+  <?php /*
+    
+    Here starts the body of your new {{TITLE}} template. Most changes happen here.
+    Keep in mind the template should mostly define the basic structure of your layout.
+    Most of the time CSS files should not be included in the template, for this you need a theme.
+    
+    Read more about the Template.php file here:
+      https://github.com/Tuxion/tuxion.cms/wiki/Template.php
+    
+  */ ?>
+  <body class="{{NAME}}-template">
+    
+    <header id="header">
+      <nav class="main-menu">
+        <?php
+          //This is an example menu module, keep in mind the max_depth prevents it from showing sub-items.
+          echo tx('Component')->modules('menu')->get_html('menu', array('max_depth' => 1));
+        ?>
+      </nav>
+    </header>
+    
+    <div id="content-body">
+      <?php
+        //The content outputs the current page's contents.
+        echo $body->content;
+      ?>
+    </div>
+    
+    <footer id="footer">
+      <p>
+        <?php
+          //This outputs the copyright notice users can configure in the CMS settings manager.
+          echo tx('Config')->user('site_copyright')->is_set() ? tx('Config')->user('site_copyright').br : '';
+        ?>
+        Powered by <a href="http://cms.tuxion.nl/" target="_blank">Tuxion CMS</a>.
+      </p>
+    </footer>
+    
+    <?php
+      //Admin toolbar is for the site switcher when you have admin privileges.
+      echo $body->admin_toolbar;
+    ?>
+    
+  </body>
+</html>

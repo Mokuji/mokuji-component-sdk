@@ -60,6 +60,20 @@ class Sections extends \dependencies\BaseViews
     );
   }
   
+  protected function theme_create()
+  {
+    return array(
+      'theme' => tx('Sql')->model('sdk', 'Theme')
+    );
+  }
+  
+  protected function template_create()
+  {
+    return array(
+      'template' => tx('Sql')->model('sdk', 'Template')
+    );
+  }
+  
   protected function package_json()
   {
     return array(

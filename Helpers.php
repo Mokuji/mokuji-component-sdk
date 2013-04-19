@@ -22,13 +22,6 @@ class Helpers extends \dependencies\BaseComponent
     //What's the path?
     $path = PATH_COMPONENTS.DS.$data->name;
     
-    //See if it exists.
-    if(file_exists($path))
-      throw new \exception\Validation('A component with that name already exists.');
-    
-    //Start with the actual folder.
-    mkdir($path);
-    
     //Define basic sub-folders.
     $subpaths = array(
       'package' => '.package',
@@ -51,16 +44,6 @@ class Helpers extends \dependencies\BaseComponent
       'frontend'
     );
     
-    //Create basic sub-folders.
-    foreach($subpaths as $key => $subpath){
-      
-      mkdir($path.DS.$subpath);
-      
-      if(in_array($key, $gitignore))
-        file_put_contents($path.DS.$subpath.DS.'.gitignore', '');
-      
-    }
-    
     //Where to copy some template files.
     $copy = array(
       array(null, 'Actions.php'),
@@ -74,20 +57,143 @@ class Helpers extends \dependencies\BaseComponent
       array('i18n', '.htaccess')
     );
     
-    foreach($copy as $target){
-      
-      $tpath = $target[0] && $subpaths[$target[0]] ? $subpaths[$target[0]].DS : '';
-      $srcpath = PATH_COMPONENTS.DS.'sdk'.DS.'includes'.DS.'component_templates'.DS.$tpath;
-      
-      $contents = file_get_contents($srcpath.$target[1].'.tmpl');
-      $contents = str_replace('{{NAME}}', $data->name->get('string'), $contents);
-      $contents = str_replace('{{TITLE}}', $data->title->get('string'), $contents);
-      file_put_contents($path.DS.$tpath.$target[1], $contents);
-      
-    }
+    //The strings to replace inside template files.
+    $replace = array(
+      '{{NAME}}' => $data->name->get('string'),
+      '{{TITLE}}' => $data->title->get('string')
+    );
+    
+    //Perform the filling of the folder.
+    $this->make_it('component', $path, $subpaths, $gitignore, $copy, $replace);
     
     //That should be it!
     return $path;
+    
+  }
+  
+  /**
+   * Creates a new theme.
+   * 
+   * @param String $data->name The name of the theme. Should be a valid theme name.
+   */
+  public function create_theme($data)
+  {
+    
+    //Validate input.
+    $data = Data($data)->having('name', 'title')
+      ->name->validate('Theme name', array('required', 'string', 'not_empty', 'component_name'))->back()
+      ->title->validate('Theme title', array('required', 'string', 'not_empty'))->back();
+    
+    //What's the path?
+    $path = PATH_THEMES.DS.'custom'.DS.$data->name;
+    
+    //Define basic sub-folders.
+    $subpaths = array(
+      'package' => '.package',
+      'css' => 'css',
+      'img' => 'img'
+    );
+    
+    $gitignore = array(
+      'img'
+    );
+    
+    //Where to copy some template files.
+    $copy = array(
+      array(null, 'Theme.php'),
+      array('css', 'style.css'),
+      array('package', 'package.json')
+    );
+    
+    //The strings to replace inside template files.
+    $replace = array(
+      '{{TITLE}}' => $data->title->get('string')
+    );
+    
+    //Perform the filling of the folder.
+    $this->make_it('theme', $path, $subpaths, $gitignore, $copy, $replace);
+    
+    //That should be it!
+    return $path;
+    
+  }
+  
+  /**
+   * Creates a new template.
+   * 
+   * @param String $data->name The name of the template. Should be a valid template name.
+   */
+  public function create_template($data)
+  {
+    
+    //Validate input.
+    $data = Data($data)->having('name', 'title')
+      ->name->validate('Template name', array('required', 'string', 'not_empty', 'component_name'))->back()
+      ->title->validate('Template title', array('required', 'string', 'not_empty'))->back();
+    
+    //What's the path?
+    $path = PATH_TEMPLATES.DS.'custom'.DS.$data->name;
+    
+    //Define basic sub-folders.
+    $subpaths = array(
+      'package' => '.package'
+    );
+    
+    $gitignore = array(
+    );
+    
+    //Where to copy some template files.
+    $copy = array(
+      array(null, 'Template.php'),
+      array('package', 'package.json')
+    );
+    
+    //The strings to replace inside template files.
+    $replace = array(
+      '{{NAME}}' => $data->name->get('string'),
+      '{{TITLE}}' => $data->title->get('string')
+    );
+    
+    //Perform the filling of the folder.
+    $this->make_it('template', $path, $subpaths, $gitignore, $copy, $replace);
+    
+    //That should be it!
+    return $path;
+    
+  }
+  
+  private function make_it($type, $path, $subpaths, $gitignore, $copy, $replace=array())
+  {
+    
+    //See if it exists.
+    if(file_exists($path))
+      throw new \exception\Validation('A '.$type.' with that name already exists.');
+    
+    //Start with the actual folder.
+    mkdir($path);
+    
+    //Create basic sub-folders.
+    foreach($subpaths as $key => $subpath){
+      
+      mkdir($path.DS.$subpath);
+      
+      if(in_array($key, $gitignore))
+        file_put_contents($path.DS.$subpath.DS.'.gitignore', '');
+      
+    }
+    
+    foreach($copy as $target){
+      
+      $tpath = $target[0] && $subpaths[$target[0]] ? $subpaths[$target[0]].DS : '';
+      $srcpath = PATH_COMPONENTS.DS.'sdk'.DS.'includes'.DS.$type.'_templates'.DS.$tpath;
+      
+      $contents = file_get_contents($srcpath.$target[1].'.tmpl');
+      foreach($replace as $tag => $value){
+        $contents = str_replace($tag, $value, $contents);
+      }
+      file_put_contents($path.DS.$tpath.$target[1], $contents);
+      
+    }
     
   }
   

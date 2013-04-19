@@ -10,6 +10,8 @@ class Views extends \dependencies\BaseViews
       'menu' => array(
         'notifications' => 'Notifications',
         'component_create' => 'New component',
+        'theme_create' => 'New theme',
+        'template_create' => 'New template',
         'package_json' => 'package.json'
       ),
       'content' => $this->section('notifications')

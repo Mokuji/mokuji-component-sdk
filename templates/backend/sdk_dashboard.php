@@ -1,6 +1,6 @@
 <?php namespace components\sdk; if(!defined('TX')) die('No direct access.'); ?>
 
-<h1><?php __($names->component, 'SDK_SDK_DASHBOARD_TITLE'); ?></h1>
+<h1><?php __($names->component, 'SDK_DASHBOARD_VIEW_TITLE'); ?></h1>
 
 <div class="clearfix">
   
