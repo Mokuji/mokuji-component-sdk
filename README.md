@@ -8,4 +8,6 @@ This component adds a configuration page with many helpers to create software qu
 * Logging of missing language files or phrases.
 * Notifications in the backend of things that need attention..
 * Component generator
+* Theme generator
+* Template generator
 * package.json generator

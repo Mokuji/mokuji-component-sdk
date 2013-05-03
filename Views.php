@@ -3,6 +3,11 @@
 class Views extends \dependencies\BaseViews
 {
   
+  protected
+    $default_permission = 2,
+    $permissions = array(
+    );
+  
   protected function sdk_dashboard()
   {
     

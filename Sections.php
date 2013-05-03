@@ -3,6 +3,11 @@
 class Sections extends \dependencies\BaseViews
 {
   
+  protected
+    $default_permission = 2,
+    $permissions = array(
+    );
+  
   protected function notifications()
   {
     

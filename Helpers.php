@@ -53,6 +53,7 @@ class Helpers extends \dependencies\BaseComponent
       array(null, 'Sections.php'),
       array(null, 'Views.php'),
       array(null, 'README.md'),
+      array('package', '.htaccess'),
       array('package', 'package.json'),
       array('i18n', '.htaccess')
     );
@@ -102,6 +103,7 @@ class Helpers extends \dependencies\BaseComponent
     $copy = array(
       array(null, 'Theme.php'),
       array('css', 'style.css'),
+      array('package', '.htaccess'),
       array('package', 'package.json')
     );
     
@@ -145,6 +147,7 @@ class Helpers extends \dependencies\BaseComponent
     //Where to copy some template files.
     $copy = array(
       array(null, 'Template.php'),
+      array('package', '.htaccess'),
       array('package', 'package.json')
     );
     

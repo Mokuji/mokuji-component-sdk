@@ -3,6 +3,11 @@
 class Json extends \dependencies\BaseComponent
 {
   
+  protected
+    $default_permission = 2,
+    $permissions = array(
+    );
+  
   protected function create_component($data, $params)
   {
     
