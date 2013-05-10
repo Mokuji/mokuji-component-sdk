@@ -13,11 +13,11 @@ class Views extends \dependencies\BaseViews
     
     return array(
       'menu' => array(
-        'notifications' => 'Notifications',
-        'component_create' => 'New component',
-        'theme_create' => 'New theme',
-        'template_create' => 'New template',
-        'package_json' => 'package.json'
+        'notifications' => __($this->component, 'Notifications', true),
+        'component_create' => __($this->component, 'New component', true),
+        'theme_create' => __($this->component, 'New theme', true),
+        'template_create' => __($this->component, 'New template', true),
+        'package_json' => __($this->component, 'package.json', true)
       ),
       'content' => $this->section('notifications')
     );

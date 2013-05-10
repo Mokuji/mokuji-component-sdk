@@ -1,0 +1,31 @@
+{
+  
+  "SDK_DASHBOARD_VIEW_TITLE": "Mokuji - SDK",
+  "SDK_DASHBOARD_VIEW_DESCRIPTION": "Het Mokuji Software Development Kit",
+  
+  "{0}(v{1}) missing language file for {2}.": "{0}(v{1}) mist taalbestand voor {2}.",
+  "{0}(v{1}) missing {3} phrase(s) for {2}.": "{0}(v{1}) mist {3} zin(nen) voor {2}.",
+  
+  "Last registered": "Laatst geregistreerd",
+  "Loaded": "Geladen",
+  "Loading": "Laden",
+  
+  "Mark notification as resolved": "Markeer notificatie als opgelost",
+  "Message": "Bericht",
+  
+  "Name": "Naam",
+  "New component": "Nieuw component",
+  "New template": "Nieuw template",
+  "New theme": "Nieuw thema",
+  "Notifications": "Notificaties",
+  
+  "package.json": "package.json",
+  "package.json generator": "package.json generator",
+  "Phrase: {0}": "Zin: {0}",
+  
+  "There was a problem loading the SDK section": "Er was een probleem tijdens het laden van de SDK sectie",
+  "Title": "Titel",
+  
+  "Will be created in {0}": "Zal worden aangemaakt in {0}"
+  
+}

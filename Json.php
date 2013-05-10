@@ -8,6 +8,50 @@ class Json extends \dependencies\BaseComponent
     $permissions = array(
     );
   
+  protected function update_resolve_translation_missing_files($data, $params)
+  {
+    
+    $affected = 0;
+    
+    tx('Sql')
+      ->table('sdk', 'TranslationMissingFiles')
+      ->where('component', "'{$params->{0}}'")
+      ->where('language_code', "'{$params->{1}}'")
+      ->execute()
+      ->each(function($phrase)use(&$affected){
+        $phrase->delete();
+        $affected++;
+      });
+    
+    return array(
+      'success' => true,
+      'affected' => $affected
+    );
+    
+  }
+  
+  protected function update_resolve_translation_missing_phrases($data, $params)
+  {
+    
+    $affected = 0;
+    
+    tx('Sql')
+      ->table('sdk', 'TranslationMissingPhrases')
+      ->where('component', "'{$params->{0}}'")
+      ->where('language_code', "'{$params->{1}}'")
+      ->execute()
+      ->each(function($phrase)use(&$affected){
+        $phrase->delete();
+        $affected++;
+      });
+    
+    return array(
+      'success' => true,
+      'affected' => $affected
+    );
+    
+  }
+  
   protected function create_component($data, $params)
   {
     
