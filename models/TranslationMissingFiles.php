@@ -14,7 +14,7 @@ class TranslationMissingFiles extends \dependencies\BaseModel
     try{
       $data = Data($data)->having('language_code', 'component')
         ->language_code->validate('Language code', array('required', 'string', 'not_empty', 'between'=>array(4, 10)), false)->back()
-        ->component->validate('Component name', array('string', 'not_empty', 'between'=>array(1,255)), false)->back();
+        ->component->validate('Component name', array('string', 'between'=>array(0,255)), false)->back();
     }
     
     //Don't crash this request just because we can't record problems.
@@ -28,8 +28,8 @@ class TranslationMissingFiles extends \dependencies\BaseModel
     }
     
     //Validate the component even exists in this installation (no hoax entries please).
-    if(!tx('Component')->available($data->component))
-      return;
+    if(!$data->component->is_empty() && !tx('Component')->available($data->component))
+      return $this;
     
     //First store the basic data we have.
     $this->merge($data->having('language_code', 'component'));

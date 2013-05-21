@@ -1,3 +1,13 @@
 #tx-backend #configbar .sdk-sdk_dashboard{
   background:url('img/icon-small.png') no-repeat bottom center;
 }
+
+#tx-backend .notification-list .details{
+  display:none;
+  line-height:1.1em;
+  padding-left:2em;
+}
+
+#tx-backend .notification-list .row-header{
+  text-align:right;
+}

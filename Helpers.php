@@ -53,6 +53,7 @@ class Helpers extends \dependencies\BaseComponent
       array(null, 'Sections.php'),
       array(null, 'Views.php'),
       array(null, 'README.md'),
+      array('package', '.htaccess'),
       array('package', 'package.json'),
       array('i18n', '.htaccess')
     );
@@ -102,8 +103,9 @@ class Helpers extends \dependencies\BaseComponent
     $copy = array(
       array(null, 'theme.php'),
       array('css', 'style.css'),
-      array('package', 'package.json'),
-      array('package', 'DBUpdates.php')
+      array('package', '.htaccess'),
+      array('package', 'DBUpdates.php'),
+      array('package', 'package.json')
     );
     
     //The strings to replace inside template files.
@@ -147,8 +149,9 @@ class Helpers extends \dependencies\BaseComponent
     //Where to copy some template files.
     $copy = array(
       array(null, 'template.php'),
-      array('package', 'package.json'),
-      array('package', 'DBUpdates.php')
+      array('package', '.htaccess'),
+      array('package', 'DBUpdates.php'),
+      array('package', 'package.json')
     );
     
     //The strings to replace inside template files.
