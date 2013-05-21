@@ -100,14 +100,16 @@ class Helpers extends \dependencies\BaseComponent
     
     //Where to copy some template files.
     $copy = array(
-      array(null, 'Theme.php'),
+      array(null, 'theme.php'),
       array('css', 'style.css'),
-      array('package', 'package.json')
+      array('package', 'package.json'),
+      array('package', 'DBUpdates.php')
     );
     
     //The strings to replace inside template files.
     $replace = array(
-      '{{TITLE}}' => $data->title->get('string')
+      '{{TITLE}}' => $data->title->get('string'),
+      '{{NAME}}' => $data->name->get('string')
     );
     
     //Perform the filling of the folder.
@@ -144,8 +146,9 @@ class Helpers extends \dependencies\BaseComponent
     
     //Where to copy some template files.
     $copy = array(
-      array(null, 'Template.php'),
-      array('package', 'package.json')
+      array(null, 'template.php'),
+      array('package', 'package.json'),
+      array('package', 'DBUpdates.php')
     );
     
     //The strings to replace inside template files.
