@@ -1,9 +1,15 @@
 {
-  "title": "Tuxion CMS - SDK",
-  "description": "The SDK component for the Tuxion CMS.",
+  "title": "Mokuji - SDK",
+  "description": "The SDK component for Mokuji.",
   "type": "manual",
   "dbUpdates": true,
   "versions": [
+    {
+      "version": "0.0.2-alpha",
+      "date": "2013-05-30",
+      "description": "Switched to new version numbering system.",
+      "changes": []
+    },
     {
       "version": "1.0",
       "date": "2013-04-04",
