@@ -18,7 +18,7 @@ class DBUpdates extends \components\update\classes\BaseDBUpdates
     
     //Queue this because it would get it's changes undone in the DB otherwise.
     $this->queue(array(
-      'component' => 'sdk',
+      'component' => 'update',
       'min_version' => '0.2.0-beta'
       ), function($version){
         
