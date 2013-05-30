@@ -20,7 +20,7 @@
           <?php if($notif->resolve->is_set()){ ?>
             <input type="checkbox" class="resolve-notification" data-action="<?php echo $notif->resolve; ?>"
               title="<?php __($names->component, 'Mark notification as resolved'); ?>" />
-          <? } ?>
+          <?php } ?>
           
         </td>
         <td>
