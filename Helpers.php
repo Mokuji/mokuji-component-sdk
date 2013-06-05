@@ -15,9 +15,10 @@ class Helpers extends \dependencies\BaseComponent
   {
     
     //Validate input.
-    $data = Data($data)->having('name', 'title')
+    $data = Data($data)->having('name', 'title', 'forced')
       ->name->validate('Component name', array('required', 'string', 'not_empty', 'component_name'))->back()
-      ->title->validate('Component title', array('required', 'string', 'not_empty'))->back();
+      ->title->validate('Component title', array('required', 'string', 'not_empty'))->back()
+      ->forced->validate('Forced', array('boolean'))->back();
     
     //What's the path?
     $path = PATH_COMPONENTS.DS.$data->name;
@@ -65,7 +66,7 @@ class Helpers extends \dependencies\BaseComponent
     );
     
     //Perform the filling of the folder.
-    $this->make_it('component', $path, $subpaths, $gitignore, $copy, $replace);
+    $this->make_it('component', $path, $subpaths, $gitignore, $copy, $replace, $data->forced->is_true());
     
     //That should be it!
     return $path;
@@ -168,20 +169,26 @@ class Helpers extends \dependencies\BaseComponent
     
   }
   
-  private function make_it($type, $path, $subpaths, $gitignore, $copy, $replace=array())
+  private function make_it($type, $path, $subpaths, $gitignore, $copy, $replace=array(), $forced=false)
   {
     
     //See if it exists.
-    if(file_exists($path))
+    if(file_exists($path) && $forced !== true)
       throw new \exception\Validation('A '.$type.' with that name already exists.');
     
     //Start with the actual folder.
-    mkdir($path);
+    if($forced === true)
+      @mkdir($path);
+    else
+      mkdir($path);
     
     //Create basic sub-folders.
     foreach($subpaths as $key => $subpath){
       
-      mkdir($path.DS.$subpath);
+      if($forced === true)
+        @mkdir($path.DS.$subpath);
+      else
+        mkdir($path.DS.$subpath);
       
       if(in_array($key, $gitignore))
         file_put_contents($path.DS.$subpath.DS.'.gitignore', '');

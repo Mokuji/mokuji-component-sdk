@@ -63,10 +63,10 @@ class Json extends \dependencies\BaseComponent
         'force_create' => true,
       ))
       
-      ->is('set', function($com){
+      ->is('set', function($com)use($data){
         
         $com->merge(array(
-          'path' => tx('Component')->helpers('sdk')->call('create_component', $com->having('name', 'title'))
+          'path' => tx('Component')->helpers('sdk')->call('create_component', $data->having('name', 'title', 'forced'))
         ));
         
       });

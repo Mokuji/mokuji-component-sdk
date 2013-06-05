@@ -10,7 +10,8 @@ class DBUpdates extends \components\update\classes\BaseDBUpdates
   protected
     $component = 'sdk',
     $updates = array(
-      '1.0' => '0.0.2-alpha'
+      '1.0' => '0.0.2-alpha',
+      '0.0.2-alpha' => '0.0.3-alpha' //No DB changes.
     );
   
   public function update_to_0_0_2_alpha($current_version, $forced)
@@ -24,7 +25,7 @@ class DBUpdates extends \components\update\classes\BaseDBUpdates
         
         //Rename the package.
         mk('Component')->helpers('update')->call('rename_component_package', array(
-          'component' => '/',
+          'component' => 'sdk',
           'old_title' => 'Tuxion CMS - SDK'
         ));
         

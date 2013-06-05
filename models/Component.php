@@ -7,6 +7,9 @@ class Component extends \dependencies\BaseModel
     
     $table_name = 'cms_components',
     
+    $labels = array(
+    ),
+    
     $validate = array(
       'id' => array('required', 'number'=>'integer', 'gt'=>0),
       'title' => array('required', 'string', 'not_empty'),

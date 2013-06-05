@@ -1,4 +1,5 @@
 #Mokuji - SDK component
+_Version 0.0.3 Alpha_
 
 An integrated software development kit for Mokuji.
 

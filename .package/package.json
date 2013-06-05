@@ -1,9 +1,15 @@
 {
-  "title": "Tuxion CMS - SDK",
+  "title": "SDK",
   "description": "The SDK component for Mokuji.",
   "type": "manual",
   "dbUpdates": true,
   "versions": [
+    {
+      "version": "0.0.3-alpha",
+      "date": "2013-06-05",
+      "description": "Added forced create option for component generator.",
+      "changes": []
+    },
     {
       "version": "0.0.2-alpha",
       "date": "2013-05-30",
