@@ -2,7 +2,7 @@
 
 <h2><?php __($names->component, 'New theme') ?></h2>
 
-<p class="com-path"><?php echo transf($names->component, "Will be created in {0}", PATH_THEMES.DS.'custom'.DS) ?></p>
+<p class="com-path"><?php echo transf($names->component, "Will be created in {0}", PATH_THEMES.DS) ?></p>
 
 <?php echo $data->theme->render_form($id, '?rest=sdk/theme', array(
   'method' => 'post'

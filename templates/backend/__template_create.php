@@ -2,7 +2,7 @@
 
 <h2><?php __($names->component, 'New template') ?></h2>
 
-<p class="com-path"><?php echo transf($names->component, "Will be created in {0}", PATH_TEMPLATES.DS.'custom'.DS) ?></p>
+<p class="com-path"><?php echo transf($names->component, "Will be created in {0}", PATH_TEMPLATES.DS) ?></p>
 
 <?php echo $data->template->render_form($id, '?rest=sdk/template', array(
   'method' => 'post'
