@@ -87,7 +87,7 @@ class Helpers extends \dependencies\BaseComponent
       ->title->validate('Theme title', array('required', 'string', 'not_empty'))->back();
     
     //What's the path?
-    $path = PATH_THEMES.DS.'custom'.DS.$data->name;
+    $path = PATH_THEMES.DS.$data->name;
     
     //Define basic sub-folders.
     $subpaths = array(
@@ -137,7 +137,7 @@ class Helpers extends \dependencies\BaseComponent
       ->title->validate('Template title', array('required', 'string', 'not_empty'))->back();
     
     //What's the path?
-    $path = PATH_TEMPLATES.DS.'custom'.DS.$data->name;
+    $path = PATH_TEMPLATES.DS.$data->name;
     
     //Define basic sub-folders.
     $subpaths = array(
