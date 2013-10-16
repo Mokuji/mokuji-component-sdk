@@ -115,4 +115,43 @@ class Json extends \dependencies\BaseComponent
     
   }
   
+  protected function update_string_replace($data)
+  {
+
+    //TEXT ITEM: description, text
+    tx('Sql')
+    ->table('text', 'ItemInfo')
+
+    ->where(tx('Sql')->conditions()
+      ->add('1', array('description', '|', "'%{$data->original}%'"))
+      ->add('2', array('text', '|', "'%{$data->original}%'"))
+      ->combine('3', array('1', '2'), 'OR')
+      ->utilize('3')
+    )
+
+    ->execute()
+    ->each(function($row)use($data){
+
+      $row->merge(array(
+        'description' => str_replace($data->original->get(), $data->replace_by->get(), $row->description->get()),
+        'text' => str_replace($data->original->get(), $data->replace_by->get(), $row->text->get())
+      ))->save();
+
+    });
+
+    //LOGO WIZARD: description
+    tx('Sql')
+    ->table('wizard', 'Answers')
+    ->where('description', '|', "'%{$data->original}%'")
+    ->execute()
+    ->each(function($row)use($data){
+
+      $row->merge(array(
+        'description' => str_replace($data->original->get(), $data->replace_by->get(), $row->description->get()),
+      ))->save();
+
+    });
+
+  }
+
 }

@@ -91,6 +91,11 @@ class Sections extends \dependencies\BaseViews
     );
   }
   
+  protected function string_replace()
+  {
+    return array();
+  }
+  
   protected function package_json()
   {
     return array(
