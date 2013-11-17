@@ -2,7 +2,14 @@
 
 class Views extends \dependencies\BaseViews
 {
-  
+
+  protected
+    $permissions = array(
+      'view_name1' => 2, // Method only executable for administrators.
+      'view_name2' => 1, // Method executable for logged in users and administrators.
+      'view_name3' => 0 // Method executable for everyone.
+    );
+
   /*
     
     # The Views.php file
@@ -21,5 +28,10 @@ class Views extends \dependencies\BaseViews
       https://github.com/Tuxion/mokuji/wiki/Views.php
     
   */
+
+  protected function view_name1()
+  {
+
+  }
   
 }

@@ -3,6 +3,13 @@
 class Actions extends \dependencies\BaseComponent
 {
   
+  protected
+    $permissions = array(
+      'method_name1' => 2, // Method executable for administrators.
+      'method_name2' => 1, // Method executable for logged in users and administrators.
+      'method_name3' => 0 // Method executable for everyone.
+    );
+  
   /*
     
     # The Actions.php file

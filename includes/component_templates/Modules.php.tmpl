@@ -2,6 +2,13 @@
 
 class Modules extends \dependencies\BaseViews
 {
+
+  protected
+    $permissions = array(
+      'module_name1' => 2, // Method only executable for administrators.
+      'module_name2' => 1, // Method executable for logged in users and administrators.
+      'module_name3' => 0 // Method executable for everyone.
+    );
   
   /*
     
