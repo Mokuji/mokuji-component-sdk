@@ -28,7 +28,7 @@ class DBUpdates extends \components\update\classes\BaseDBUpdates
     }
     
     tx('Sql')
-      ->model('cms', 'Template')
+      ->model('cms', 'Templates')
       ->set(array(
         'name' => '{{NAME}}',
         'title' => '{{TITLE}}'
