@@ -11,7 +11,7 @@
 <?php echo $data->component->render_form($id, '?rest=sdk/component', array(
   'method' => 'post',
   'fields' => array(
-    'forced' => '\\dependencies\\forms\\CheckboxField'
+    // 'forced' => '\\dependencies\\forms\\CheckboxField'
   )
 )); ?>
 
